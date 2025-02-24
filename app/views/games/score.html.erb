@@ -1,0 +1,16 @@
+<div class="d-flex flex-column justify-content-center p-5 text-center w-50 m-auto">
+
+  <h1>Result</h1>
+
+  <p class="pt-5 font-weight-bold"><%= @letters %></p>
+  <% if @compare_letter.include?(false) %>
+    <p>"Sorry but <%= @answer %> can't be built out of <%= @chars %>"</p>
+    <% elsif !@result %>
+    <p>Sorry but <%= @answer %> does not seem to be a valid English word...</p>
+    <% else %>
+    <p>"Congratulations! <%= @answer %> is a valid English word!"</p>
+  <% end %>
+
+  <%= link_to "Play again", new_path %>
+
+</div>

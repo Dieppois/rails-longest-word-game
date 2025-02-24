@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ p {
+ font-size: 2rem;
+ font-weight: 800;
+ text-transform: uppercase;
+ }
