@@ -1,15 +1,16 @@
-<div class="d-flex flex-column justify-content-center p-5 text-center w-50 m-auto">
+<div class="d-flex flex-column justify-content-center p-5 text-center container m-auto vh-100">
+  <h3 class="black-100">Welcome to the longest word-game!</h3>
+  <h1 class="black-100 title mb-5 mt-4">Ready to take on the challenge?<br>Here's your letter grid:</h1>
+  <p class="display-fs mt-4 font-weight-bold white"><%= @letters %></p>
 
-  <h1>Welcome to the longest word-game!</h1>
-  <h3>Here is your grid:</h3>
-  <p class="display-3 pt-5 font-weight-bold"><%= @letters %></p>
-
-  <form class="input-group mb-3 mt-5 w-100" action="score" method="post" data-turbo="false">
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <input name="letters" type="hidden" value="<%= @letters %>" />
-    <input type="text" name="word" class="form-control" placeholder="What is your longest word?" aria-label="What is your longest word?">
-    <div class="input-group-append">
-      <input type="submit" value="Send my answer" class="input-group-text btn btn-primary py-3">
-    </div>
-  </form>
+  <div class="w-100 d-flex flex-column align-items-center">
+    <form class="input-group mb-3 mt-5 w-50 form-custom" action="score" method="post" data-turbo="false">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input name="letters" type="hidden" value="<%= @letters %>" />
+      <input type="text" name="word" class="form-control" placeholder="What is your longest word?" aria-label="What is your longest word?">
+      <div class="input-group-append width-100">
+        <input type="submit" value="Send my answer" class="input-group-text btn btn-primary py-3 btn-mrimary-custom width-100">
+      </div>
+    </form>
+  </div>
 </div>

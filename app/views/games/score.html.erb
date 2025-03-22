@@ -1,16 +1,16 @@
-<div class="d-flex flex-column justify-content-center p-5 text-center w-50 m-auto">
+<div class="d-flex flex-column justify-content-center text-center w-50 m-auto vh-100 width-100">
+  <h1 class="black-100 title">Result</h1>
 
-  <h1>Result</h1>
+  <p class="font-weight-bold white"><%= @letters %></p>
 
-  <p class="pt-5 font-weight-bold"><%= @letters %></p>
-  <% if @compare_letter.include?(false) %>
-    <p>"Sorry but <%= @answer %> can't be built out of <%= @chars %>"</p>
-    <% elsif !@result %>
-    <p>Sorry but <%= @answer %> does not seem to be a valid English word...</p>
-    <% else %>
-    <p>"Congratulations! <%= @answer %> is a valid English word!"</p>
+  <% if @compare_letter.any? { |letter| letter == false } %>
+    <p>Sorry but <span class="white">"<%= @answer %>"</span> can't be built out of <span class="white">"<%= @chars %>"</span></p>
+  <% elsif @result == 'invalid' %>
+    <p>Sorry but <span class="white">"<%= @answer %>"</span> does not seem to be a valid English word...</p>
+  <% else %>
+    <p>Congratulations! <span class="white">"<%= @answer %>"</span> is a valid English word!</p>
   <% end %>
 
-  <%= link_to "Play again", new_path %>
 
+  <%= link_to "Play again", new_path, class: "btn btn-primary py-3 btn-primary-custom mt-5" %>
 </div>

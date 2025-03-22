@@ -10,10 +10,16 @@ class GamesController < ApplicationController
     @answer = params[:word]
     @chars = params[:letters]
 
-    url = URI.open("https://dictionary.lewagon.com/#{@answer}").read
-    parsing_url = JSON.parse(url)
-    @result = parsing_url['found']
+    # Vérifier que le mot soumis est valide en utilisant une API de dictionnaire
+    begin
+      url = URI.open("https://api.dictionaryapi.dev/api/v2/entries/en/#{@answer}").read
+      parsing_url = JSON.parse(url)
+      @result = parsing_url.first['meanings'].any? ? 'valid' : 'invalid'
+    rescue StandardError => e
+      @result = 'invalid'
+    end
 
+    # Vérification de la présence des lettres
     @compare_letter = @answer.upcase.chars.map do |letter|
       @chars.split.include?(letter)
     end
